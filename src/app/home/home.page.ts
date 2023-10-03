@@ -35,7 +35,7 @@ export class HomePage {
 
   obtenerUser(id: any){
     this.api.getUsuario(id).subscribe((data)=>{
-      this.users = data;
+      this.user = data;
   })}
 
   obtenerPost(post: any){
@@ -56,11 +56,15 @@ export class HomePage {
   })}
 
   guardarPost(post: any){
-    this.api.createPost(post).subscribe((success)=>{
-      console.log(success);
-      },error=>{
-      console.log(error);
-      })
+    this.post.userId = this.user.id
+
+    if(this.post.userId !== null){
+      this.api.createPost(this.post).subscribe((success)=>{
+        console.log(success);
+        },error=>{
+        console.log(error);
+        })
+    }
   }
 
   compareWithFn = (o1:any, o2:any) => {
