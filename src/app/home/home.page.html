@@ -32,7 +32,7 @@
     </ion-item>
     <ion-grid>
       <ion-row>
-        <ion-col><ion-button shape="round" expand="block">Limpiar</ion-button></ion-col>
+        <ion-col><ion-button shape="round" expand="block" (click)="limpiarPost(post.id)">Limpiar</ion-button></ion-col>
         <ion-col><ion-button shape="round" expand="block" (click)="guardarPost(users.id)">Guardar</ion-button></ion-col>
         <ion-col><ion-button shape="round" expand="block" (click)="updatePost(post.id, post)">Actualizar</ion-button></ion-col>
       </ion-row>
