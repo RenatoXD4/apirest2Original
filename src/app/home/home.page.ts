@@ -39,14 +39,16 @@ export class HomePage {
   })}
 
   obtenerPost(post: any){
+    this.post.userId = this.user.id
     this.api.getPost(post).subscribe(data =>{
       this.posts = data
+      this.obtenerPosts();
     })
   }
 
   eliminarPost(post: any){
     this.api.deletePost(post.id).subscribe((data)=>{
-      this.post = data
+      this.obtenerPosts();
     })
   }
 
@@ -55,16 +57,21 @@ export class HomePage {
       this.post = data;
   })}
 
+
+  updatePost(id: any, post: any){
+    this.api.updatePost(this.post.id, this.post).subscribe((data)=>{
+      this.obtenerPosts();
+  })}
+
   guardarPost(post: any){
     this.post.userId = this.user.id
-
-    if(this.post.userId !== null){
       this.api.createPost(this.post).subscribe((success)=>{
+        this.obtenerPosts();
         console.log(success);
         },error=>{
         console.log(error);
         })
-      }
+      
     }
     
 

@@ -13,7 +13,7 @@
     </ion-card-header>
     <ion-item>
       <ion-select placeholder="Seleccione usuario" [compareWith]="compareWithFn" [(ngModel)]="user">
-        <ion-select-option *ngFor="let usu of users" [value]="usu">{{usu.name}} </ion-select-option>
+        <ion-select-option *ngFor="let usu of users" [value]="usu" (click)="obtenerPost(user.id)">{{usu.name}} </ion-select-option>
       </ion-select>
     </ion-item>
   </ion-card>
@@ -34,6 +34,7 @@
       <ion-row>
         <ion-col><ion-button shape="round" expand="block">Limpiar</ion-button></ion-col>
         <ion-col><ion-button shape="round" expand="block" (click)="guardarPost(users.id)">Guardar</ion-button></ion-col>
+        <ion-col><ion-button shape="round" expand="block" (click)="updatePost(post.id, post)">Actualizar</ion-button></ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
